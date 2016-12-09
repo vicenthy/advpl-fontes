@@ -1,27 +1,25 @@
 #include 'totvs.ch'
-#INCLUDE "FWPrintSetup.ch"
-#Include "ParmType.ch"
-
+#INCLUDE 'FWPrintSetup.ch'
+#Include 'ParmType.ch'
 
 CLASS MyMSPrinter From FWMSPrinter
 	DATA nPage
 	METHOD New(cFilePrintert, nDevice, lAdjustToLegacy, cPathInServer, lDisabeSetup, lTReport, oPrintSetup, cPrinter, lServer, lPDFAsPNG, lRaw, lViewPDF, nQtdCopy) CONSTRUCTOR
 	METHOD CountPage()
 	METHOD QuebraManual()
-	METHOD PularLinha(nLinha, nPageSize)
+	METHOD PularLinha()
 	METHOD mRodape(bRodape)
 	METHOD mCabec(bCabec)
-
 ENDCLASS
 
-//-----------------------------------------------------------------
-METHOD New(cFilePrintert, nDevice, lAdjustToLegacy, cPathInServer, lDisabeSetup, lTReport, oPrintSetup, cPrinter, lServer, lPDFAsPNG, lRaw, lViewPDF, nQtdCopy) CLASS MyPrinter
+//----------------
+METHOD New(cFilePrintert, nDevice, lAdjustToLegacy, cPathInServer, lDisabeSetup, lTReport, oPrintSetup, cPrinter, lServer, lPDFAsPNG, lRaw, lViewPDF, nQtdCopy) CLASS MyMSPrinter
 	_Super:New(cFilePrintert, nDevice, lAdjustToLegacy, cPathInServer, lDisabeSetup, lTReport, oPrintSetup, cPrinter, lServer, lPDFAsPNG, lRaw, lViewPDF, nQtdCopy)
-::nPage := 0
+	::nPage := 0
 Return
 
 
-METHOD PularLinha(nLinAtu, nLin, ,nPageSize, bRodape, bCabec) CLASS MyPrinter
+METHOD PularLinha(nLinAtu, nLin, nPageSize, bRodape, bCabec) CLASS MyMSPrinter
 Default nLin := 1
 Default nPageSize := ::nPageHeight
 Default nPageIni := 640
@@ -40,25 +38,24 @@ return nLin
 
 
 
-METHOD CountPage() CLASS MyPrinter
-::nPage +=1 
+METHOD CountPage() CLASS MyMSPrinter
+::nPage += 1 
 Return (::nPage)
 
 
 
-METHOD mRodape(bRodape) CLASS MyPrinter
-Eval(bRodape)
-Return 
-
-
-METHOD mCabec(bCabec) CLASS MyPrinter
-Eval(bCabec)
-Return 
-
-
-METHOD QuebraManual() CLASS MyPrinter
+METHOD QuebraManual() CLASS MyMSPrinter
 ::EndPage()
 ::StartPage()
 return 
 
 
+
+METHOD mRodape(bRodape) CLASS MyMSPrinter
+Eval(bRodape)
+Return 
+
+
+METHOD mCabec(bCabec) CLASS MyMSPrinter
+Eval(bCabec)
+Return
