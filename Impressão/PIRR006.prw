@@ -7,11 +7,7 @@
 *-----------------------------------*
 /*/{Protheus.doc} PIRR006
 
-Rotina respons·vel pelo relatÛrio Resumo de mapas.
-@author Ricardo junior
-@since 31/10/16
-@version 1.1		
-/*/
+
 *-----------------------*
  User Function PIRR006() 
 *-----------------------*
@@ -54,7 +50,7 @@ EndIf
 RestArea( _aAreaAnt )
 Return
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pelas configuraÁıes de fontes
+//Descri√ß√£o: Fun√ß√£o responsavel pelas configura√ß√µes de fontes
 //------------------------------------------------------------
 *---------------------------*
 Static Function fGerRel()
@@ -96,7 +92,7 @@ MsgRun( "Imprimindo Dados..."			, "Imprimindo Dados...", {|| fGetDados() })
 
 Return
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o do cabeÁalho
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o do cabe√ßalho
 //------------------------------------------------------------
 *---------------------------------*
  Static Function fGetCabec()
@@ -114,7 +110,7 @@ Return
 	oPrint:SayBitmap( 015, 010, cFileLogo ,121, 29 )
 	
 	oPrint:Say( 020, 0515, OemToAnsi( "Rotina: " ) + FUNNAME(),oFont10n )
-	oPrint:Say( 030, 0515, OemToAnsi( "P·g: " ) + cValToChar(_nPage),oFont10n )
+	oPrint:Say( 030, 0515, OemToAnsi( "P√°g: " ) + cValToChar(_nPage),oFont10n )
 	oPrint:Say( 040, 0515, OemToAnsi( "Data: " ) + DToC(dDatabase),oFont10n )
 	oPrint:Say( 050, 0515, OemToAnsi( "Hora: " ) + Time(),oFont10n )
 	
@@ -124,7 +120,7 @@ Return
 	oPrint:Say( _nLinha, 010, OemToAnsi( "FILIAL: " )+ AllTrim(SM0->M0_CODFIL) + " - " + AllTrim(SM0->M0_FILIAL) ,oFont14 )           
 	_nLinha := fPulaLinha()
 	//oPrint:FillRect( {_nLinha - 10, 010, _nLinha + 5, 0830}, oBrush1 )
-	oPrint:Say( _nLinha, 010, OemToAnsi( "POSI«√O EM " ) + DToC(dDataBase) ,oFont14 )           
+	oPrint:Say( _nLinha, 010, OemToAnsi( "POSI√á√ÉO EM " ) + DToC(dDataBase) ,oFont14 )           
 	
 	_nLinha := fPulaLinha()
 	
@@ -147,9 +143,9 @@ Return
 	//oPrint:Say( _nLinha + 10, 0210, "CARREGADOS", oFont14n )
 	oPrint:SayAlign( _nLinha, 0140, "CARREGADOS",oFont14n, 0450, 0020,, 2, 2 )
 	
-	//oPrint:Box( _nLinha, 0484 , _nLinha + 15, 0830)//N„o carregados
+	//oPrint:Box( _nLinha, 0484 , _nLinha + 15, 0830)//N√£o carregados
 	//BoxColor( _nLinha, 0484, _nLinha + 15, 0830, CLR_HGRAY)
-	//oPrint:Say( _nLinha + 10, 0550, "N√O CARREGADOS", oFont14n )
+	//oPrint:Say( _nLinha + 10, 0550, "N√ÉO CARREGADOS", oFont14n )
 	BoxColor( _nLinha  + 15, 0140 , _nLinha + 30, 0180, CLR_HGRAY)
 	oPrint:SayAlign( _nLinha + 14, 0142, "Qtde", oFont14n, 0040, 0020,, 2, 2 )
 	
@@ -182,7 +178,7 @@ Return
 	_nLinha := fPulaLinha() 
 Return
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o de TOTAIS
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o de TOTAIS
 //------------------------------------------------------------
 *----------------------------*
  Static Function fGetDados()
@@ -202,7 +198,7 @@ Return
 	Local aItens		:= {}
 	cTipo := "TOTAL GERAL"
 	
-	MsgRun("Imprimindo CabeÁalho..."	, "Imprimindo CabeÁalho...", {|| fGetCabec(cTipo)})
+	MsgRun("Imprimindo Cabe√ßalho..."	, "Imprimindo Cabe√ßalho...", {|| fGetCabec(cTipo)})
 	 
 	 _cQuery := " SELECT " + CRLF
 	 _cQuery += " DAK_FILIAL, " + CRLF
@@ -287,16 +283,16 @@ Return
 	
 	MsgRun("Imprimindo Vendas...", 			"Imprimindo Vendas... ", {|| fImpVendas()})
 	MsgRun("Imprimindo Transferencias...", 	"Imprimindo Transferencias... ", {|| fImpTransf()})
-	MsgRun("Imprimindo OrganizaÁ„o...", 	"Imprimindo OrganizaÁ„o... ", {|| fImpOrg()})
-	MsgRun("Imprimindo PraÁa...", 			"Imprimindo PraÁa... ", {|| fImpPraca() })
+	MsgRun("Imprimindo Organiza√ß√£o...", 	"Imprimindo Organiza√ß√£o... ", {|| fImpOrg()})
+	MsgRun("Imprimindo Pra√ßa...", 			"Imprimindo Pra√ßa... ", {|| fImpPraca() })
 	MsgRun("Imprimindo Interior...", 		"Imprimindo Interior... ", {|| fImpInter() })
-	MsgRun("Imprimindo DoaÁ„o...", 			"Imprimindo DoaÁ„o... ", {|| fImpDoacao()})
+	MsgRun("Imprimindo Doa√ß√£o...", 			"Imprimindo Doa√ß√£o... ", {|| fImpDoacao()})
 	MsgRun("Imprimindo Outros...", 			"Imprimindo Outros", {|| fImpOutros()})
 	
 	oPrint:Preview()
 Return
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o do rodapÈ
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o do rodap√©
 //------------------------------------------------------------
 *-----------------------------------*
  Static Function fGetRodape()
@@ -307,7 +303,7 @@ oPrint:EndPage()
 
 Return
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pelo controle de pulo de linhas
+//Descri√ß√£o: Fun√ß√£o responsavel pelo controle de pulo de linhas
 //------------------------------------------------------------
 *-------------------------------*
 Static Function fPulaLinha(nLin)
@@ -325,7 +321,7 @@ EndIf
 
 Return _nLinha
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela criaÁ„o das perguntas do 
+//Descri√ß√£o: Fun√ß√£o responsavel pela cria√ß√£o das perguntas do 
 //			 parametro
 //------------------------------------------------------------
 *--------------------------*
@@ -333,11 +329,11 @@ Static Function CriaPerg()
 *--------------------------*
 
 	PutSx1( _cPerg, "01", "Data de?"		,"","", "mv_ch1", "D",08, 00, 00, "G","", ""	,"",""	, "mv_par01","","","","","","","","","","","","","","","","", { "Digite a data de..."},{},{},"")
-	PutSx1( _cPerg, "02", "Data Ate?"		,"","", "mv_ch2", "D",08, 00, 00, "G","", ""	,"",""	, "mv_par02","","","","","","","","","","","","","","","","", { "Digite a data atÈ..."},{},{},"")
+	PutSx1( _cPerg, "02", "Data Ate?"		,"","", "mv_ch2", "D",08, 00, 00, "G","", ""	,"",""	, "mv_par02","","","","","","","","","","","","","","","","", { "Digite a data at√©..."},{},{},"")
 
 Return
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o de VENDAS
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o de VENDAS
 //------------------------------------------------------------
 *-------------------------------------*
 Static Function fImpVendas()
@@ -360,7 +356,7 @@ Static Function fImpVendas()
 	
 	fGetRodape()
 	_nLinha := 50
-	MsgRun("Imprimindo CabeÁalho..."	, "Imprimindo CabeÁalho...", {|| fGetCabec(cTipo)})
+	MsgRun("Imprimindo Cabe√ßalho..."	, "Imprimindo Cabe√ßalho...", {|| fGetCabec(cTipo)})
 	
 	_cQuery := " SELECT DAK_FILIAL, " 				+ CRLF
 	_cQuery += " 		DAK_DATA, " 				+ CRLF
@@ -415,7 +411,7 @@ Static Function fImpVendas()
 		TRBVEN->(DbSkip())	
 	EndDo
 	fImpItens(aItens)
-	MsgRun("Imprimindo RodapÈ...", "Imprimindo RodapÈ... ", {|| fGetRodape()})
+	MsgRun("Imprimindo Rodap√©...", "Imprimindo Rodap√©... ", {|| fGetRodape()})
 	TRBVEN->(DbCloseArea())
 Return
 *-------------------------------------*
@@ -433,11 +429,11 @@ Static Function fImpTransf()
 	Local nX			:= 00
 	Local aItens		:= {}
 	
-	cTipo := "MAPA DE TRANSFER NCIA"
+	cTipo := "MAPA DE TRANSFER√äNCIA"
 	
 	fGetRodape()
 	_nLinha := 50
-	MsgRun("Imprimindo CabeÁalho..."	, "Imprimindo CabeÁalho...", {|| fGetCabec(cTipo)})
+	MsgRun("Imprimindo Cabe√ßalho..."	, "Imprimindo Cabe√ßalho...", {|| fGetCabec(cTipo)})
 	
 	_cQuery := " SELECT DAK_FILIAL, " 						+ CRLF
 	_cQuery += " 		DAK_DATA, " 						+ CRLF
@@ -493,11 +489,11 @@ Static Function fImpTransf()
 	EndDo
 	fImpItens(aItens)
 	
-	MsgRun("Imprimindo RodapÈ...", "Imprimindo RodapÈ... ", {|| fGetRodape()})
+	MsgRun("Imprimindo Rodap√©...", "Imprimindo Rodap√©... ", {|| fGetRodape()})
 	TRBTRA->(DbCloseArea())
 Return 	
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o de ORGANIZA«√O
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o de ORGANIZA√á√ÉO
 //------------------------------------------------------------
 *-------------------------------------*
 Static Function fImpOrg()
@@ -514,12 +510,12 @@ Static Function fImpOrg()
 	Local nX			:= 00
 	Local aItens		:= {}
 	
-	cTipo := "ORGANIZA«√O"
+	cTipo := "ORGANIZA√á√ÉO"
 	
 	fGetRodape()
 	_nLinha := 50
 	
-	MsgRun("Imprimindo CabeÁalho..."	, "Imprimindo CabeÁalho...", {|| fGetCabec(cTipo)})
+	MsgRun("Imprimindo Cabe√ßalho..."	, "Imprimindo Cabe√ßalho...", {|| fGetCabec(cTipo)})
 	_nLinha := fPulaLinha()
 	
 	_cQuery := " SELECT DAK_FILIAL, " 								+ CRLF
@@ -581,11 +577,11 @@ Static Function fImpOrg()
 	
 	fImpItens(aItens)
 	
-	MsgRun("Imprimindo RodapÈ...", "Imprimindo RodapÈ... ", {|| fGetRodape()})
+	MsgRun("Imprimindo Rodap√©...", "Imprimindo Rodap√©... ", {|| fGetRodape()})
 	TRBORG->(DbCloseArea())
 Return 	
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o de INTERIOR
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o de INTERIOR
 //------------------------------------------------------------
 *-------------------------------------*
 Static Function fImpInter()
@@ -605,7 +601,7 @@ Static Function fImpInter()
 	cTipo := "INTERIOR"
 	
 	_nLinha := 50
-	MsgRun("Imprimindo CabeÁalho..."	, "Imprimindo CabeÁalho...", {|| fGetCabec(cTipo)})
+	MsgRun("Imprimindo Cabe√ßalho..."	, "Imprimindo Cabe√ßalho...", {|| fGetCabec(cTipo)})
 	
 	_cQuery := " SELECT DAK_FILIAL, " 							+ CRLF
 	_cQuery += " 		DAK_DATA, " 							+ CRLF
@@ -664,13 +660,13 @@ Static Function fImpInter()
 	EndDo
 	
 	fImpItens(aItens)
-	MsgRun("Imprimindo RodapÈ...", "Imprimindo RodapÈ... ", {|| fGetRodape()})
+	MsgRun("Imprimindo Rodap√©...", "Imprimindo Rodap√©... ", {|| fGetRodape()})
 	
 	TRBINT->(DbCloseArea())
 	
 Return 
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o de PRA«A
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o de PRA√áA
 //------------------------------------------------------------
 *-------------------------------------*
 Static Function fImpPraca()
@@ -687,10 +683,10 @@ Static Function fImpPraca()
 	Local nX	     := 00
 	Local aItens     := {}
 	
-	cTipo := "PRA«A"
+	cTipo := "PRA√áA"
 	
 	_nLinha := 50
-	MsgRun("Imprimindo CabeÁalho..."	, "Imprimindo CabeÁalho...", {|| fGetCabec(cTipo)})
+	MsgRun("Imprimindo Cabe√ßalho..."	, "Imprimindo Cabe√ßalho...", {|| fGetCabec(cTipo)})
 	
 	_cQuery := " SELECT DAK_FILIAL, " 				+ CRLF
 	_cQuery += " 		DAK_DATA, " 				+ CRLF
@@ -748,12 +744,12 @@ Static Function fImpPraca()
 		TRBPRC->(DbSkip())	
 	EndDo
 	fImpItens(aItens)	
-	MsgRun("Imprimindo RodapÈ...", "Imprimindo RodapÈ... ", {|| fGetRodape()})
+	MsgRun("Imprimindo Rodap√©...", "Imprimindo Rodap√©... ", {|| fGetRodape()})
 	
 	TRBPRC->(DbCloseArea())
 Return 	
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o de DOA«’ES
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o de DOA√á√ïES
 //------------------------------------------------------------
 *-------------------------------------*
 Static Function fImpDoacao()
@@ -769,11 +765,11 @@ Static Function fImpDoacao()
 	Local nQtdnCar		:= 00
 	Local nX			:= 00
 	Local aItens		:= {}
-	cTipo := "DOA«√O"
+	cTipo := "DOA√á√ÉO"
 	
 	fGetRodape()
 	_nLinha := 50
-	MsgRun("Imprimindo CabeÁalho..."	, "Imprimindo CabeÁalho...", {|| fGetCabec(cTipo)})
+	MsgRun("Imprimindo Cabe√ßalho..."	, "Imprimindo Cabe√ßalho...", {|| fGetCabec(cTipo)})
 	
 	_cQuery := " SELECT DAK_FILIAL, " 				+ CRLF
 	_cQuery += " 		DAK_DATA, " 				+ CRLF
@@ -830,11 +826,11 @@ Static Function fImpDoacao()
 	
 	fImpItens(aItens)	
 	
-	MsgRun("Imprimindo RodapÈ...", "Imprimindo RodapÈ... ", {|| fGetRodape()})
+	MsgRun("Imprimindo Rodap√©...", "Imprimindo Rodap√©... ", {|| fGetRodape()})
 	TRBDOA->(DbCloseArea())
 Return 	
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel pela impress„o de OUTROS
+//Descri√ß√£o: Fun√ß√£o responsavel pela impress√£o de OUTROS
 //------------------------------------------------------------
 *-------------------------------------*
 Static Function fImpOutros()
@@ -855,7 +851,7 @@ Static Function fImpOutros()
 	cTodosCF := GetMv("MV_XDOACAO") + "," + GetMv("MV_XOPER") + "," + GetMv("MV_XCFTRAN") 
 	fGetRodape()
 	_nLinha := 50
-	MsgRun("Imprimindo CabeÁalho..."	, "Imprimindo CabeÁalho...", {|| fGetCabec(cTipo)})
+	MsgRun("Imprimindo Cabe√ßalho..."	, "Imprimindo Cabe√ßalho...", {|| fGetCabec(cTipo)})
 	
 	_cQuery := " SELECT DAK_FILIAL, " 							+ CRLF
 	_cQuery += " 		DAK_DATA, " 							+ CRLF
@@ -915,11 +911,11 @@ Static Function fImpOutros()
 
 	fImpItens(aItens)	
 	
-	MsgRun("Imprimindo RodapÈ...", "Imprimindo RodapÈ... ", {|| fGetRodape()})
+	MsgRun("Imprimindo Rodap√©...", "Imprimindo Rodap√©... ", {|| fGetRodape()})
 	TRBOUT->(DbCloseArea())
 Return 	
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o responsavel por retornar as quantidades 
+//Descri√ß√£o: Fun√ß√£o responsavel por retornar as quantidades 
 //			 referente ao pedido de venda
 //------------------------------------------------------------
 *-------------------------------------------------*
@@ -971,8 +967,8 @@ Static Function fGetQuant(cEmissao, cCarreg, cInterior, lFezNf)
 	RestArea(aArea)
 Return _nQuant
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o para imprimir os Totais 
-//  		 Essa funÁ„o recebe um array e imprime
+//Descri√ß√£o: Fun√ß√£o para imprimir os Totais 
+//  		 Essa fun√ß√£o recebe um array e imprime
 //------------------------------------------------------------
 *----------------------------------------------*
 Static Function fImpTotais(aDados)
@@ -1013,8 +1009,8 @@ Static Function fImpTotais(aDados)
 	EndIf	
 Return
 //------------------------------------------------------------
-//DescriÁ„o: FunÁ„o Impress„o dos itens 
-//  		 Essa funÁ„o recebe como parametro os itens e imprime
+//Descri√ß√£o: Fun√ß√£o Impress√£o dos itens 
+//  		 Essa fun√ß√£o recebe como parametro os itens e imprime
 //------------------------------------------------------------
 *--------------------------------------*
 Static Function fImpItens(aItens)
@@ -1033,7 +1029,7 @@ Static Function fImpItens(aItens)
 	
 	For nX := 01 To Len(aItens)
 		
-		If aItens[nX][3] > 0 .Or. aItens[nX][7] > 0// Quant entregue .Or. Quant n„o entregue 
+		If aItens[nX][3] > 0 .Or. aItens[nX][7] > 0// Quant entregue .Or. Quant n√£o entregue 
 		
 		oPrint:Box( _nLinha - 13 , 0010 , _nLinha + 17, 0070) 
 		//oPrint:Say( _nLinha, 0012, DToC(SToD(aItens[nX][1])), oFont13n )
